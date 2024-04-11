@@ -66,10 +66,17 @@ async function updatetodo(id:number,{description}:uptodo){
 }
 
 async function deleteTodo(id:number){
-    const res=await prisma.u.delete({
+    const res=await prisma.todo.delete({
         where:{
             id
         }
     })
 console.log(res)
+}
+
+async function gettodo(title:string){
+    const todo=await prisma.todo.findFirst({
+        where:{title}
+    })
+    console.log(todo)
 }
