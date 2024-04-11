@@ -48,4 +48,3 @@ async function getUser(email:string){
     console.log(user)
 }
 
-getUser("hii@gmail.com")
