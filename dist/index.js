@@ -28,4 +28,33 @@ function insertUser(email, name, password) {
         console.log(res);
     });
 }
-insertUser("hiiwwe@gmail.com", "12wwe", "cody");
+function updateUser(email, { name }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const res = yield prisma.u.update({
+            where: { email },
+            data: {
+                name
+            }
+        });
+        console.log(res);
+    });
+}
+function deleteUser(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const res = yield prisma.u.delete({
+            where: {
+                id
+            }
+        });
+        console.log(res);
+    });
+}
+function getUser(email) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const user = yield prisma.u.findFirst({
+            where: { email }
+        });
+        console.log(user);
+    });
+}
+getUser("hii@gmail.com");

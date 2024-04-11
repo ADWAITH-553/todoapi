@@ -18,15 +18,34 @@ async function insertUser(email:string,name:string,password:string)
     })
     console.log(res)
 }
-insertUser("hiiwwe@gmail.com","12wwe","cody")
+
 interface updateparms{
     name:string
 }
 async function updateUser(email:string,{name}:updateparms){
-    prisma.u.update({
+    const res=await prisma.u.update({
         where:{email},
         data:{
             name
         }
     })
+    console.log(res)
 }
+
+
+async function deleteUser(id:number){
+    const res=await prisma.u.delete({
+        where:{
+            id
+        }
+    })
+console.log(res)
+}
+async function getUser(email:string){
+    const user=await prisma.u.findFirst({
+        where:{email}
+    })
+    console.log(user)
+}
+
+getUser("hii@gmail.com")
