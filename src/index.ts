@@ -58,11 +58,18 @@ async function inserttodo(title:string,done:boolean,description:string){
 interface uptodo{
     description:string
 }
-async function updatetodo(title:string,{description}:uptodo){
+async function updatetodo(id:number,{description}:uptodo){
     const res=await prisma.todo.update({
-        where:{
-            title
-        },
+        where:{id},
         data:{description}
     })
+}
+
+async function deleteTodo(id:number){
+    const res=await prisma.u.delete({
+        where:{
+            id
+        }
+    })
+console.log(res)
 }
