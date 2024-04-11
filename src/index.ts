@@ -49,9 +49,20 @@ async function getUser(email:string){
 }
 
 async function inserttodo(title:string,done:boolean,description:string){
-    const res=await prisma.u.create({
+    const res=await prisma.todo.create({
         data:{title,
             done,
             description},
+    })
+}
+interface uptodo{
+    description:string
+}
+async function updatetodo(title:string,{description}:uptodo){
+    const res=await prisma.todo.update({
+        where:{
+            title
+        },
+        data:{description}
     })
 }
