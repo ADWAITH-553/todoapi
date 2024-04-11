@@ -48,3 +48,10 @@ async function getUser(email:string){
     console.log(user)
 }
 
+async function inserttodo(title:string,done:boolean,description:string){
+    const res=await prisma.u.create({
+        data:{title,
+            done,
+            description},
+    })
+}
